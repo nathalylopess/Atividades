@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Lista de Livros</h1>
+
+    <a href="{{url_for('books.register')}}">Adicionar</a>
+    <!--  <a href="{{url_for('books.emprestimo')}}">Emprestar</a> -->
+    <hr>
+
+    <form action="{{url_for('books.emprestimo')}}" method="post">
+        <select name="user">
+            {% for user in users %}
+                <option value="{{user.id}}">{{user.nome}}</option>    
+            {% endfor %}                
+        </select>
+        {% for book in books %}
+            <p>{{book.titulo}}</p> <button>Enviar</button>
+        {% endfor %}
+    </form>
+
+</body>
+</html>
